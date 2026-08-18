@@ -138,20 +138,56 @@ AIFORIX의 핵심 교육·솔루션 방법론인 **'바이브코딩(Vibe Coding)
   },
 ];
 
+export interface VideoEpisode {
+  id: string;
+  title: string;
+  url: string;
+  youtubeId: string;
+  timeOffset?: number;
+  duration?: string;
+  desc?: string;
+}
+
 export const YOUTUBE_SERIES_INFO = {
-  title: '유통물류TV 통·통·통 출연 시리즈',
-  description: 'AI 실무 활용과 기업 디지털 전환을 주제로 한 전문 대담 및 인사이트 강연 영상입니다.',
-  youtubeUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', // Placeholder or standard embed
+  title: '생성형 AI 기업 실전 활용 시리즈',
+  badge: '생성형 AI 기업 실전 활용 시리즈',
+  description: '방송 및 공식 채널을 통해 전하는 AIFORIX의 생생한 실무 인사이트와 현업 AI 도입 성공 노하우입니다.',
   episodes: [
     {
-      title: '제1화: B2B 기업의 현실적인 AI 도입과 직원 역량 강화 전략',
-      duration: '18분',
-      desc: '단순한 ChatGPT 활용을 넘어 실질적인 업무 프로세스 혁신을 이끄는 방법',
+      id: 'ep-1',
+      title: '현장사진 AI가 분석해 720배 효율을 달성하고 직원에게 가치 인정',
+      url: 'https://www.youtube.com/watch?v=MKE2r0mSL9Q&list=PLAW7Hng9KwlIFM-CBRkXoPgWR10zeXfBq&index=12&t=54s',
+      youtubeId: 'MKE2r0mSL9Q',
+      timeOffset: 54,
+      duration: '영상 보기',
+      desc: '위험성평가 및 현장 사진 분석을 통한 720배 업무 시간 단축과 사람 중심 가치 실현 사례',
     },
     {
-      title: '제2화: 비개발자도 만드는 사내 업무 자동화와 바이브코딩의 미래',
-      duration: '22분',
-      desc: '현업 실무자가 직접 자신의 반복 업무를 자동화하는 성공 사례 분석',
+      id: 'ep-2',
+      title: 'AI로 업무자동화에 회의한번하면 168배 효율 나온다',
+      url: 'https://www.youtube.com/watch?v=95s-tOKTXyU&list=PLAW7Hng9KwlIFM-CBRkXoPgWR10zeXfBq&index=48&t=74s',
+      youtubeId: '95s-tOKTXyU',
+      timeOffset: 74,
+      duration: '영상 보기',
+      desc: '단 한 번의 현업 미팅으로 반복 업무를 자동화하여 168배 업무 생산성을 이끌어낸 노하우',
+    },
+    {
+      id: 'ep-3',
+      title: 'AI활용해 제안서 100페이지 5시간만에 완성 하는 노하우',
+      url: 'https://www.youtube.com/watch?v=g2vN60JLQ8A&t=25s',
+      youtubeId: 'g2vN60JLQ8A',
+      timeOffset: 25,
+      duration: '영상 보기',
+      desc: '방대한 100페이지 분량의 사업 제안서를 단 5시간 만에 완벽한 구조로 완성하는 프롬프트 전략',
+    },
+    {
+      id: 'ep-4',
+      title: 'AI전문가 도움받으면 HR박사 융합후 최적성과물 나온다고요',
+      url: 'https://www.youtube.com/watch?v=OwhdAEaKOT8&list=PLAW7Hng9KwlIFM-CBRkXoPgWR10zeXfBq&index=4',
+      youtubeId: 'OwhdAEaKOT8',
+      timeOffset: 0,
+      duration: '영상 보기',
+      desc: '도메인 전문 지식(HR/전문분야)과 AI 엔지니어링 융합을 통한 조직 최적의 성과 도출 인사이트',
     },
   ],
 };

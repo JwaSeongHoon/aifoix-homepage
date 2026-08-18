@@ -17,6 +17,7 @@ import {
   Users
 } from 'lucide-react';
 import { BRAND_PHILOSOPHY } from '../theme/tokens';
+import ceoProfileImage from '../assets/images/ceo_profile_image_1787054254844.jpg';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -276,8 +277,13 @@ export const AboutPage: React.FC = () => {
           <div className="bg-white border border-gray-200 rounded-[12px] p-6 sm:p-10 shadow-ds-sm">
             {/* Header / Basic Info */}
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 pb-8 border-b border-gray-100">
-              <div className="w-28 h-28 rounded-full bg-[#E6F0FF] border-2 border-[#0A5EDD]/20 flex items-center justify-center shrink-0 text-[#0A5EDD]">
-                <User className="w-14 h-14 text-[#0A5EDD]" />
+              <div className="w-28 h-28 rounded-full overflow-hidden bg-[#F1F5F9] border-2 border-[#0A5EDD]/30 shrink-0 shadow-ds-sm">
+                <img
+                  src={ceoProfileImage}
+                  alt="AIFORIX 좌성훈 대표"
+                  className="w-full h-full object-cover object-top"
+                  referrerPolicy="no-referrer"
+                />
               </div>
               <div className="text-center sm:text-left space-y-1.5">
                 <div className="flex flex-col sm:flex-row sm:items-center gap-2">

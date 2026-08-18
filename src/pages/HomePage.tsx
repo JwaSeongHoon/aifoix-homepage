@@ -19,6 +19,7 @@ import {
   Award
 } from 'lucide-react';
 import { BRAND_PHILOSOPHY } from '../theme/tokens';
+import ceoProfileImage from '../assets/images/ceo_profile_image_1787054254844.jpg';
 
 // CountUp Hook for Smooth Scroll-Triggered Animation
 function useCountUp(target: number, duration: number = 1600, start: boolean = false) {
@@ -477,9 +478,14 @@ export const HomePage: React.FC = () => {
           />
 
           <div className="bg-white border border-gray-200 rounded-[12px] p-6 sm:p-8 shadow-ds-sm flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-            {/* 원형 플레이스홀더 사진 */}
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-[#E6F0FF] border-2 border-[#0A5EDD]/20 flex items-center justify-center shrink-0 text-[#0A5EDD]">
-              <User className="w-12 h-12 text-[#0A5EDD]" />
+            {/* 대표 프로필 사진 */}
+            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-[#F1F5F9] border-2 border-[#0A5EDD]/30 shrink-0 shadow-ds-sm">
+              <img
+                src={ceoProfileImage}
+                alt="AIFORIX 좌성훈 대표"
+                className="w-full h-full object-cover object-top"
+                referrerPolicy="no-referrer"
+              />
             </div>
 
             {/* 대표 정보 */}

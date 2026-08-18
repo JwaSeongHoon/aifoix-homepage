@@ -3,7 +3,7 @@ import { SectionTitle } from '../components/common/SectionTitle';
 import { PrimaryButton } from '../components/common/PrimaryButton';
 import { OutlineButton } from '../components/common/OutlineButton';
 import { CTASection } from '../components/common/CTASection';
-import { insights, InsightItem, YOUTUBE_SERIES_INFO } from '../data/insights';
+import { insights, InsightItem, YOUTUBE_SERIES_INFO, VideoEpisode } from '../data/insights';
 import { 
   BookOpen, 
   Calendar, 
@@ -12,12 +12,15 @@ import {
   X, 
   Tv, 
   Play, 
-  Video
+  Video,
+  ExternalLink,
+  Sparkles
 } from 'lucide-react';
 
 export const InsightPage: React.FC = () => {
   const [selectedSeries, setSelectedSeries] = useState<string>('전체');
   const [activeArticle, setActiveArticle] = useState<InsightItem | null>(null);
+  const [activeVideo, setActiveVideo] = useState<VideoEpisode>(YOUTUBE_SERIES_INFO.episodes[0]);
 
   const seriesTabs = ['전체', 'AI 보안', '케이스 스터디', 'AI 인재양성'];
 
@@ -151,64 +154,96 @@ export const InsightPage: React.FC = () => {
           />
 
           <div className="bg-white rounded-[16px] border border-gray-200 p-6 sm:p-8 shadow-ds-sm">
-            <div className="flex flex-col lg:row gap-8 items-center">
-              {/* Video Player Card / Placeholder */}
-              <div className="w-full lg:w-1/2 aspect-video bg-[#111827] rounded-[12px] overflow-hidden relative group flex items-center justify-center shadow-ds-md">
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex flex-col justify-end p-5">
-                  <span className="inline-block text-[10px] font-extrabold bg-[#0A5EDD] text-white px-2 py-0.5 rounded-[4px] uppercase tracking-wider mb-1 w-fit">
-                    SPECIAL EPISODE
-                  </span>
-                  <h4 className="text-white text-sm sm:text-base font-bold leading-tight">
-                    {YOUTUBE_SERIES_INFO.title}
-                  </h4>
-                  <p className="text-gray-300 text-xs mt-1">
-                    AI 실무 활용과 기업 디지털 전환 전문가 대담
-                  </p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              {/* Video Player (Responsive YouTube Iframe) */}
+              <div className="lg:col-span-6 flex flex-col gap-3">
+                <div className="w-full aspect-video bg-[#111827] rounded-[12px] overflow-hidden relative shadow-ds-md border border-gray-300">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${activeVideo.youtubeId}?autoplay=0&start=${activeVideo.timeOffset || 0}&rel=0`}
+                    title={activeVideo.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowFullScreen
+                    className="w-full h-full border-0"
+                  />
                 </div>
 
-                <div className="w-14 h-14 rounded-full bg-white/90 text-[#0A5EDD] flex items-center justify-center shadow-ds-md group-hover:scale-110 transition-transform">
-                  <Play className="w-6 h-6 fill-[#0A5EDD] ml-1" />
+                <div className="p-3.5 bg-[#F8FAFC] border border-gray-200 rounded-[10px] flex items-center justify-between gap-2">
+                  <div className="min-w-0">
+                    <span className="text-[10px] font-bold text-[#0A5EDD] uppercase tracking-wider block">
+                      NOW PLAYING
+                    </span>
+                    <p className="text-xs font-bold text-[#1F2937] truncate mt-0.5">
+                      {activeVideo.title}
+                    </p>
+                  </div>
+                  <a
+                    href={activeVideo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-[6px] bg-white border border-gray-200 text-[#0A5EDD] text-xs font-bold hover:bg-[#E6F0FF] transition-colors shrink-0 shadow-ds-sm"
+                  >
+                    <span>유튜브 열기</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
 
-              {/* Series Info & Episodes */}
-              <div className="w-full lg:w-1/2 flex flex-col justify-between">
+              {/* Series Info & Episodes Playlist */}
+              <div className="lg:col-span-6 flex flex-col justify-between">
                 <div>
                   <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0A5EDD] bg-[#E6F0FF] px-2.5 py-1 rounded-[6px] mb-2">
                     <Tv className="w-3.5 h-3.5" />
-                    <span>유통물류TV 출연 시리즈</span>
+                    <span>{YOUTUBE_SERIES_INFO.badge}</span>
                   </div>
 
                   <h3 className="text-lg sm:text-xl font-bold text-[#1F2937] mb-2">
                     {YOUTUBE_SERIES_INFO.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-[#4B5563] leading-relaxed mb-5">
                     {YOUTUBE_SERIES_INFO.description}
                   </p>
 
-                  <div className="space-y-3">
-                    {YOUTUBE_SERIES_INFO.episodes.map((ep, idx) => (
-                      <div
-                        key={idx}
-                        className="bg-[#F1F5F9] p-3.5 rounded-[10px] border border-gray-200 flex items-start justify-between gap-3"
-                      >
-                        <div className="flex items-start gap-2.5">
-                          <Video className="w-4 h-4 text-[#0A5EDD] shrink-0 mt-0.5" />
-                          <div>
-                            <h5 className="font-bold text-[#1F2937] text-xs sm:text-sm">
-                              {ep.title}
-                            </h5>
-                            <p className="text-[11px] text-[#4B5563] mt-0.5">
-                              {ep.desc}
-                            </p>
+                  {/* Episodes Playlist */}
+                  <div className="space-y-2.5 max-h-[420px] overflow-y-auto pr-1">
+                    {YOUTUBE_SERIES_INFO.episodes.map((ep, idx) => {
+                      const isSelected = activeVideo.id === ep.id;
+                      return (
+                        <div
+                          key={ep.id || idx}
+                          onClick={() => setActiveVideo(ep)}
+                          className={`p-3 sm:p-3.5 rounded-[10px] border transition-all cursor-pointer flex items-start justify-between gap-3 ${
+                            isSelected
+                              ? 'bg-[#EBF3FF] border-[#0A5EDD] shadow-ds-sm'
+                              : 'bg-[#F1F5F9] border-gray-200 hover:bg-white hover:border-[#0A5EDD]/40'
+                          }`}
+                        >
+                          <div className="flex items-start gap-2.5 min-w-0">
+                            <div className={`mt-0.5 p-1 rounded-[4px] shrink-0 ${isSelected ? 'bg-[#0A5EDD] text-white' : 'bg-white text-[#0A5EDD] border border-gray-200'}`}>
+                              <Play className={`w-3 h-3 ${isSelected ? 'fill-white' : 'fill-[#0A5EDD]'}`} />
+                            </div>
+                            <div className="min-w-0">
+                              <h5 className={`font-bold text-xs sm:text-sm leading-snug line-clamp-2 ${isSelected ? 'text-[#0A5EDD]' : 'text-[#1F2937]'}`}>
+                                {ep.title}
+                              </h5>
+                              <p className="text-[11px] text-[#4B5563] mt-1 line-clamp-2 leading-relaxed">
+                                {ep.desc}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="shrink-0 flex flex-col items-end gap-1.5">
+                            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-[4px] border ${
+                              isSelected 
+                                ? 'bg-[#0A5EDD] text-white border-[#0A5EDD]' 
+                                : 'bg-white text-[#4B5563] border-gray-200'
+                            }`}>
+                              {isSelected ? '재생 중' : '선택'}
+                            </span>
                           </div>
                         </div>
-                        <span className="text-[10px] font-semibold text-[#9CA3AF] bg-white px-2 py-0.5 rounded-[4px] border border-gray-200 shrink-0">
-                          {ep.duration}
-                        </span>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
                 </div>
               </div>
