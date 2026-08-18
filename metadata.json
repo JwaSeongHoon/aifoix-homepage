@@ -1,0 +1,6 @@
+{
+  "name": "AIFORIX",
+  "description": "AIFORIX(에이포릭스) 공식 웹사이트 - AI 교육, 컨설팅, 자동화, 솔루션 전문 B2B 기업",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
