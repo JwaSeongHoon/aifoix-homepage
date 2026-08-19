@@ -19,7 +19,6 @@ import {
   Award
 } from 'lucide-react';
 import { BRAND_PHILOSOPHY } from '../theme/tokens';
-import ceoProfileImage from '../assets/images/ceo_profile_image_1787054254844.jpg';
 
 // CountUp Hook for Smooth Scroll-Triggered Animation
 function useCountUp(target: number, duration: number = 1600, start: boolean = false) {
@@ -477,20 +476,10 @@ export const HomePage: React.FC = () => {
             align="center"
           />
 
-          <div className="bg-white border border-gray-200 rounded-[12px] p-6 sm:p-8 shadow-ds-sm flex flex-col sm:flex-row items-center gap-6 sm:gap-8">
-            {/* 대표 프로필 사진 */}
-            <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden bg-[#F1F5F9] border-2 border-[#0A5EDD]/30 shrink-0 shadow-ds-sm">
-              <img
-                src={ceoProfileImage}
-                alt="AIFORIX 좌성훈 대표"
-                className="w-full h-full object-cover object-top"
-                referrerPolicy="no-referrer"
-              />
-            </div>
-
+          <div className="bg-white border border-gray-200 rounded-[12px] p-6 sm:p-8 shadow-ds-sm">
             {/* 대표 정보 */}
-            <div className="flex-1 text-center sm:text-left space-y-2">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 justify-center sm:justify-start">
+            <div className="space-y-3">
+              <div className="flex flex-wrap items-center gap-2">
                 <h3 className="text-xl font-extrabold text-[#1F2937]">좌성훈</h3>
                 <span className="text-xs font-bold text-[#0A5EDD] bg-[#E6F0FF] px-2.5 py-0.5 rounded-full inline-block">
                   AIFORIX 대표
@@ -498,22 +487,22 @@ export const HomePage: React.FC = () => {
               </div>
 
               {/* 3줄 요약 문구 */}
-              <div className="pt-2 space-y-1.5 text-xs sm:text-sm text-[#4B5563]">
-                <p className="flex items-center gap-2 justify-center sm:justify-start">
+              <div className="pt-1 space-y-2 text-xs sm:text-sm text-[#4B5563]">
+                <p className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0A5EDD] shrink-0" />
                   <span>IT 분야 20년 실무 경험의 엔지니어 출신</span>
                 </p>
-                <p className="flex items-center gap-2 justify-center sm:justify-start">
+                <p className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0A5EDD] shrink-0" />
                   <span>한국AI서비스학회 AI사업본부장</span>
                 </p>
-                <p className="flex items-center gap-2 justify-center sm:justify-start">
+                <p className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-[#0A5EDD] shrink-0" />
                   <span>국가인공지능전략위원회 AI전문가 · 한국산업인력공단 AI 훈련코치</span>
                 </p>
               </div>
 
-              <div className="pt-3">
+              <div className="pt-2">
                 <Link to="/about" className="inline-flex items-center gap-1 text-xs font-bold text-[#0A5EDD] hover:text-[#08225C] transition-colors">
                   <span>상세 프로필 및 이력 보기</span>
                   <ArrowRight className="w-3.5 h-3.5" />

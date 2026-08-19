@@ -17,7 +17,6 @@ import {
   Users
 } from 'lucide-react';
 import { BRAND_PHILOSOPHY } from '../theme/tokens';
-import ceoProfileImage from '../assets/images/ceo_profile_image_1787054254844.jpg';
 
 export const AboutPage: React.FC = () => {
   return (
@@ -276,29 +275,19 @@ export const AboutPage: React.FC = () => {
 
           <div className="bg-white border border-gray-200 rounded-[12px] p-6 sm:p-10 shadow-ds-sm">
             {/* Header / Basic Info */}
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 sm:gap-8 pb-8 border-b border-gray-100">
-              <div className="w-28 h-28 rounded-full overflow-hidden bg-[#F1F5F9] border-2 border-[#0A5EDD]/30 shrink-0 shadow-ds-sm">
-                <img
-                  src={ceoProfileImage}
-                  alt="AIFORIX 좌성훈 대표"
-                  className="w-full h-full object-cover object-top"
-                  referrerPolicy="no-referrer"
-                />
+            <div className="pb-8 border-b border-gray-100 space-y-2">
+              <div className="flex flex-wrap items-center gap-2.5">
+                <h3 className="text-2xl font-extrabold text-[#1F2937]">좌성훈</h3>
+                <span className="text-xs font-bold text-[#0A5EDD] bg-[#E6F0FF] px-2.5 py-0.5 rounded-full inline-block">
+                  AIFORIX 대표
+                </span>
               </div>
-              <div className="text-center sm:text-left space-y-1.5">
-                <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                  <h3 className="text-2xl font-extrabold text-[#1F2937]">좌성훈</h3>
-                  <span className="text-xs font-bold text-[#0A5EDD] bg-[#E6F0FF] px-2.5 py-0.5 rounded-full inline-block">
-                    AIFORIX 대표
-                  </span>
-                </div>
-                <p className="text-sm font-semibold text-[#1F2937]">
-                  한국AI서비스학회 AI사업본부장 · 국가인공지능전략위원회 AI전문가 · 한국산업인력공단 AI 훈련코치
-                </p>
-                <p className="text-xs text-[#4B5563] max-w-xl">
-                  IT 분야 20년 — 엔지니어 → 연구소장 → 인재교육팀장 → AIFORIX 대표
-                </p>
-              </div>
+              <p className="text-sm sm:text-base font-semibold text-[#1F2937]">
+                한국AI서비스학회 AI사업본부장 · 국가인공지능전략위원회 AI전문가 · 한국산업인력공단 AI 훈련코치
+              </p>
+              <p className="text-xs sm:text-sm text-[#4B5563]">
+                IT 분야 20년 — 엔지니어 → 연구소장 → 인재교육팀장 → AIFORIX 대표
+              </p>
             </div>
 
             {/* Detailed Career & Specs Grid */}
