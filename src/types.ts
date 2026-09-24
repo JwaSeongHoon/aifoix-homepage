@@ -12,6 +12,8 @@ export type AppRoute =
   | '/insight'
   | '/contact'
   | '/privacy'
+  | '/terms'
+  | '/data-deletion'
   | '/admin';
 
 export interface NavItem {

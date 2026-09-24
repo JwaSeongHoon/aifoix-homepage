@@ -15,6 +15,8 @@ import { PortfolioPage } from './pages/PortfolioPage';
 import { InsightPage } from './pages/InsightPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPage } from './pages/PrivacyPage';
+import { TermsPage } from './pages/TermsPage';
+import { DataDeletionPage } from './pages/DataDeletionPage';
 import { AdminPage } from './pages/AdminPage';
 
 function AppContent() {
@@ -48,6 +50,10 @@ function AppContent() {
         return <ContactPage />;
       case '/privacy':
         return <PrivacyPage />;
+      case '/terms':
+        return <TermsPage />;
+      case '/data-deletion':
+        return <DataDeletionPage />;
       case '/admin':
         return <AdminPage />;
       default:

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from '../../router/Link';
 import { COMPANY_INFO, BRAND_PHILOSOPHY } from '../../theme/tokens';
 import { Logo } from './Logo';
-import { Mail, Phone, ShieldCheck, Lock } from 'lucide-react';
+import { Mail, Phone, ShieldCheck, Lock, FileText, Trash2 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -102,11 +102,11 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-blue-900/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-blue-300/60">
+        <div className="pt-8 border-t border-blue-900/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-blue-300/60">
           <div>
             © {currentYear} {COMPANY_INFO.name} Inc. All rights reserved.
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">
             <Link
               to="/privacy"
               className="text-blue-200 hover:text-white font-medium transition-colors flex items-center gap-1"
@@ -114,7 +114,23 @@ export const Footer: React.FC = () => {
               <ShieldCheck className="w-3.5 h-3.5" />
               <span>개인정보처리방침</span>
             </Link>
-            <span className="text-blue-900">|</span>
+            <span className="text-blue-900 hidden sm:inline">|</span>
+            <Link
+              to="/terms"
+              className="text-blue-200 hover:text-white font-medium transition-colors flex items-center gap-1"
+            >
+              <FileText className="w-3.5 h-3.5" />
+              <span>서비스 이용약관</span>
+            </Link>
+            <span className="text-blue-900 hidden sm:inline">|</span>
+            <Link
+              to="/data-deletion"
+              className="text-blue-200 hover:text-white font-medium transition-colors flex items-center gap-1"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              <span>데이터 삭제 안내</span>
+            </Link>
+            <span className="text-blue-900 hidden sm:inline">|</span>
             <Link
               to="/admin"
               className="text-blue-300/60 hover:text-blue-200 text-[11px] transition-colors flex items-center gap-1"
